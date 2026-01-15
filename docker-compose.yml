@@ -7,7 +7,7 @@ services:
       - "traefik.http.routers.cyberchef.rule=Host(`cyberchef.trashcollector.dev`)"
       - "traefik.http.routers.cyberchef.entrypoints=https"
       - "traefik.http.routers.cyberchef.tls.certresolver=letsencrypt"
-      - "traefik.http.services.cyberchef.loadbalancer.server.port=8000"
+      - "traefik.http.services.cyberchef.loadbalancer.server.port=80"
       - "traefik.docker.network=dev_lab"
     networks:
       - dev_lab
