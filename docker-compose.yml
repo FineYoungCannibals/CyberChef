@@ -1,0 +1,17 @@
+services:
+  cyberchef:
+    image: ghcr.io/gchq/cyberchef:latest
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cyberchef.rule=Host(`cyberchef.trashcollector.dev`)"
+      - "traefik.http.routers.cyberchef.entrypoints=https"
+      - "traefik.http.routers.cyberchef.tls.certresolver=letsencrypt"
+      - "traefik.http.services.cyberchef.loadbalancer.server.port=8000"
+      - "traefik.docker.network=dev_lab"
+    networks:
+      - dev_lab
+
+networks:
+  dev_lab:
+    external: true
